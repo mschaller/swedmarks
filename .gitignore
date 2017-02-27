@@ -2,3 +2,4 @@ compile
 cache
 trash*
 config/config.php
+config/configsmarty.php
