@@ -1,0 +1,63 @@
+#listMainFolder {
+    margin: 0px;
+}
+
+#navFolder {
+    margin-top: 0px;
+    float: left;
+    width: 240px;
+    height: 100%;
+    border: 1px solid #dddddd;
+}
+
+#navFolder ul {
+    padding-left: 10px;
+
+    font-family: Verdana, Georgia, Times, serif;
+    font-size: 12px;
+ }
+
+#navFolder li {
+    list-style-type: none;
+    background-image: url(../assets/folder.gif);
+    background-repeat: no-repeat;
+    line-height: 16px;
+    padding-left: 18px;
+    vertical-align: middle;
+   
+}
+
+#navBookmarks {
+    float: none;
+    margin-top: 50px;
+    margin-left: 250px;
+    height: 100%;
+    //border: 1px solid #dddddd;
+}
+
+.bookmarkItem {
+    margin-left: 2px;
+    margin-bottom: 5px;
+    
+ 
+    border: 1px solid #dddddd;
+    font-family: Verdana, Georgia, Times, serif;
+    font-size: 12px;
+}
+
+.bookmarkName {
+    font-weight: bold;
+    
+}
+
+.bookmarkUrl {
+    color: #bbbbbb;
+    margin-top: 1px;
+
+}
+
+.bookmarkDescription {
+    margin-top: 3px;
+
+}
+
