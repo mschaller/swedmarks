@@ -8,7 +8,7 @@ $smarty->setCompileDir('/var/www/dev.swednet.de/html/swedmarks/compile');
 $smarty->setCacheDir('/var/www/dev.swednet.de/html/swedmarks/cache');
 $smarty->setConfigDir('/var/www/dev.swednet.de/html/swedmarks/config');
 
-include "config.php";
+include "./config/config.php";
 $db = mysqli_connect($dsn['hostspec'],$dsn['username'],$dsn['password'],$dsn['database']);
 
 if(!$db)

@@ -16,7 +16,7 @@
 
 
         <script type="text/javascript" src="js/swedmarks.js"></script>
-        <script type="text/javascript"
+        <script type="text/javascript">
             function AttachEvent(element, type, handler) {
                 if (element.addEventListener) element.addEventListener(type, handler, false);
                 else element.attachEvent("on"+type, handler);

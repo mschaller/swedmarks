@@ -1,3 +1,4 @@
 compile
 cache
 trash*
+config/config.php

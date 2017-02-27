@@ -1,5 +1,5 @@
 <?php
-include "config.php";
+include "config/config.php";
 $db = mysqli_connect($dsn['hostspec'],$dsn['username'],$dsn['password'],$dsn['database']);
 
 if(!$db)
