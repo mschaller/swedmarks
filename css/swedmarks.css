@@ -38,7 +38,8 @@
 .bookmarkItem {
     margin-left: 2px;
     margin-bottom: 5px;
-    
+
+    padding: 0.9em 1em;
  
     border: 1px solid #dddddd;
     font-family: Verdana, Georgia, Times, serif;
