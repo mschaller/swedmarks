@@ -14,4 +14,6 @@ while(($row = mysqli_fetch_assoc($result))) {
     $rows[] = $row;
 }
 
-print json_encode($rows);
+include "./config/configsmarty.php";
+$smarty->assign('rows', $rows);
+$smarty->display('folder.tpl');

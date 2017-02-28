@@ -1,3 +1,19 @@
+function attachEvent(element, type, handler) {
+    if (element.addEventListener)
+        element.addEventListener(type, handler, false);
+    else 
+        element.attachEvent("on"+type, handler);
+}
+
+function detachEvent(element, type, handler) {
+    if (element.removeEventListener)
+        element.removeEventListener(type, handler);
+    else
+        element.detachEvent("on"+type, handler);
+}
+
+
+
 function loadJSON(url, callback) {
     var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
@@ -24,42 +40,19 @@ function updateBookmarks(id) {
     loadJSON("getLinks.php?parent=" + id, buildBookmarks);
 }
 
-function folderTreeElement(data, parent, depth) {
-    var index, len;
-    var result = "";
-    var count = 0;
-    for(index = 0, len = data.length; index < len; index++) {
-        if(data[index].childof != parent)
-            continue;
-
-        result += "<li id=\"" + data[index].id + "\">"
-                    + data[index].name
-                    ;
-        
-        result +=folderTreeElement(data, data[index].id, depth+1) + "</li>";
+function buildFolderTree(response) {
+    var listFolder = document.getElementById("listFolder");
+    if(listFolder != null) {
+        detachEvent(listFolder, "click", updateBookmarksEvent);
     }
 
-    if(result.len == 0) {
-        return "";
-    }
-    return "<ul>" + result + "</ul>";
-}
+    var navFolder = document.getElementById("navFolder");
+    navFolder.innerHTML = response;
 
-function toggleCheckbox(element)
-{
-    alert(element);
-    element.checked = !element.checked;
+    listFolder = document.getElementById("listFolder");
+    attachEvent(listFolder, "click", updateBookmarksEvent);
 }
-
 
 function updateFolderTree() {
     loadJSON("getFolder.php", buildFolderTree);
-}
-
-function buildFolderTree(response) {
-var data = JSON.parse(response);
-
-    var navFolder = document.getElementById("listFolder");
-    navFolder.innerHTML = "";
-    navFolder.innerHTML = folderTreeElement(data,0, 0);
 }
