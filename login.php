@@ -27,6 +27,13 @@ if(isset($_POST["logon"])) {
     $_SESSION["user"] = $row.user;
     $_SESSION["admin"] = $row.admin;
 
+    @setcookie($cookie['name'], 
+        $cookie['data'],
+        $cookie['expire'],
+        $cookie['path'],
+        $cookie['domain']
+    );
+
     header("Location: index.php");
     exit();
 }
