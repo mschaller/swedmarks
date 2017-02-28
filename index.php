@@ -1,4 +1,11 @@
 <?php 
+session_start();
+
+if(!isset($_SESSION["loggedin"])) {
+    header("Location: login.php");
+    exit();
+}
+
 
 include "./config/config.php";
 $db = mysqli_connect($dsn['hostspec'],$dsn['username'],$dsn['password'],$dsn['database']);

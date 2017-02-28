@@ -5,22 +5,17 @@
         <link rel="stylesheet" href="css/login.css">
     </head>
     <body>
-<form action="https://example.org/login.php" method="post">
-  <ul>
-    <li>
-      <label for="login">Benutzer</label>
-      <input id="login" name="login">
-    </li>
-    <li>
-      <label for="pass">Passwort</label>
-      <input id="pass" name="pass" type="password">
-    </li>
-    <li>
-      <button>anmelden</button>
-    </li>
-  </ul>
-</form>
-
+        <form action="login.php" method="post">
+            <div>
+                <span style="display: inline-block; width: 80px;"><label for="login">Username</label></span>
+                <span><input id="login" name="login"/></span>
+            </div>
+            <div>
+                <span style="display: inline-block; width: 80px;"><label for="password">Password</label></span>
+                <span><input id="password" name="password" type="password"/></span>
+            </div>
+            <div><input type="submit" value="login" name="logon"/></div>
+        </form>
         <script type="text/javascript" src="login.js"></script>
         <script type="text/javascript">
         </script>
