@@ -28,6 +28,9 @@ function loadJSON(url, callback) {
 }
 
 function buildBookmarks(response) {
+    if(response == "") {
+        window.location.href = "login.php";
+    }
     var navFolder = document.getElementById("navBookmarks");
     navFolder.innerHTML = response;
 }
@@ -44,6 +47,10 @@ function buildFolderTree(response) {
     var listFolder = document.getElementById("listFolder");
     if(listFolder != null) {
         detachEvent(listFolder, "click", updateBookmarksEvent);
+    }
+
+    if(response == "") {
+        window.location.href = "login.php";
     }
 
     var navFolder = document.getElementById("navFolder");
