@@ -15,7 +15,14 @@
 
     font-family: Verdana, Georgia, Times, serif;
     font-size: 12px;
- }
+}
+
+.activeFolder {
+    color: #000000;
+    background-color: #C1D2EE;
+    border: 1px #316AC5 solid;
+    padding: 1px;
+}
 
 #navFolder li {
     list-style-type: none;

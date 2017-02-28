@@ -35,8 +35,21 @@ function buildBookmarks(response) {
     navFolder.innerHTML = response;
 }
 
-function updateBookmarksEvent(e) {
-    updateBookmarks(e.target.id);
+function selectFolderItem(item) {
+    var list = document.getElementsByClassName("activeFolder");
+    for(var i = 0; i < list.length; i++) {
+        list[i].removeAttribute("class");
+    }
+
+    item.setAttribute("class","activeFolder");
+    updateBookmarks(item.id);        
+}
+
+function folderItemClicked(e) {
+    if(e.target.nodeName != "SPAN")
+        return;
+
+    selectFolderItem(e.target);
 }
 
 function updateBookmarks(id) {
@@ -46,7 +59,7 @@ function updateBookmarks(id) {
 function buildFolderTree(response) {
     var listFolder = document.getElementById("listFolder");
     if(listFolder != null) {
-        detachEvent(listFolder, "click", updateBookmarksEvent);
+        detachEvent(listFolder, "click", folderItemClicked);
     }
 
     if(response == "") {
@@ -57,7 +70,7 @@ function buildFolderTree(response) {
     navFolder.innerHTML = response;
 
     listFolder = document.getElementById("listFolder");
-    attachEvent(listFolder, "click", updateBookmarksEvent);
+    attachEvent(listFolder, "click", folderItemClicked);
 }
 
 function updateFolderTree() {
