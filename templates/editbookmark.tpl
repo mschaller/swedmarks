@@ -1,6 +1,6 @@
 <div>
     <h2>{$title}</h2>
-    <form action="getBookmark.php?action={$action}" id="dataForm" method="POST">
+    <form action="editBookmark.php?action={$action}" id="dataForm" method="POST">
         <p>Title<br>
         <input type=text name="title" size="50" value="{$bmtitle}"></p>
         <p>URL<br>

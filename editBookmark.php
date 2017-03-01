@@ -61,4 +61,4 @@ if($action == "new") {
 
 $smarty->assign("action", $action);
 $smarty->assign("title", $title);
-$smarty->display('bookmark.tpl');
+$smarty->display('editbookmark.tpl');

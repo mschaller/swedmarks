@@ -82,5 +82,5 @@ function newBookmark() {
     var folderid = 0;
     folderid=list[0].id;
 
-    bookmark_new = window.open("getBookmark.php?action=new&folderid="+folderid, "bookmarknew","toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=500");
+    bookmark_new = window.open("editBookmark.php?action=new&folderid="+folderid, "bookmarknew","toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=400");
 }
