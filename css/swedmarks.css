@@ -8,8 +8,14 @@
     overflow-y: auto;
 }
 
+.navHeaderIndent {
+    left: 250px;
+}
+
 #navHeader ul {
-    margin: 0;
+    position: fixed;
+    display: inline;
+    margin: 5px 0 0 0;
     padding: 0;
     list-style-type: none;
 }
