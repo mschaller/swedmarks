@@ -78,5 +78,9 @@ function updateFolderTree() {
 }
 
 function newBookmark() {
-    bookmark_new = window.open("getBookmark.php?action=new", "bookmarknew","toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=500");
+    var list = document.getElementsByClassName("activeFolder");
+    var folderid = 0;
+    folderid=list[0].id;
+
+    bookmark_new = window.open("getBookmark.php?action=new&folderid="+folderid, "bookmarknew","toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=500");
 }
