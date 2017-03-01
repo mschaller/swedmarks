@@ -82,5 +82,13 @@ function newBookmark() {
     var folderid = 0;
     folderid=list[0].id;
 
-    bookmark_new = window.open("editBookmark.php?action=new&folderid="+folderid, "bookmarknew","toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=400");
+    window.open("editBookmark.php?action=new&folderid="+folderid, "bookmarknew","toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=400");
+}
+
+function newFolder() {
+    var list = document.getElementsByClassName("activeFolder");
+    var folderid = 0;
+    folderid=list[0].id;
+
+    window.open("editFolder.php?action=new&folderid="+folderid, "foldernew","toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=200");
 }
