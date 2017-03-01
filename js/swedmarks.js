@@ -53,7 +53,7 @@ function folderItemClicked(e) {
 }
 
 function updateBookmarks(id) {
-    loadJSON("getLinks.php?parent=" + id, buildBookmarks);
+    loadJSON("getBookmark.php?parent=" + id, buildBookmarks);
 }
 
 function buildFolderTree(response) {

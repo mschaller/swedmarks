@@ -22,4 +22,4 @@ while(($row = mysqli_fetch_assoc($result))) {
 
 include "./config/configsmarty.php";
 $smarty->assign('rows', $rows);
-$smarty->display('links.tpl');
+$smarty->display('bookmark.tpl');
