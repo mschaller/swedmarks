@@ -76,3 +76,7 @@ function buildFolderTree(response) {
 function updateFolderTree() {
     loadJSON("getFolder.php", buildFolderTree);
 }
+
+function newBookmark() {
+    bookmark_new = window.open("getBookmark.php?action=new", "bookmarknew","toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=500");
+}

@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="css/swedmarks.css">
     </head>
     <body>
+        <div id="navHeader">{include 'header.tpl'}</div>
         <div id="navFolder"></div>
         <div id="navBookmarks"></div>
         <script type="text/javascript" src="js/swedmarks.js"></script>
