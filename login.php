@@ -22,10 +22,10 @@ if(isset($_POST["logon"])) {
     if($result->num_rows == 0) {
         exit();
     }
-    $row = mysqli_fetch_array($result);
+    $row = mysqli_fetch_object($result);
     $_SESSION["loggedin"] = TRUE;
-    $_SESSION["user"] = $row.user;
-    $_SESSION["admin"] = $row.admin;
+    $_SESSION["user"] = $row->user;
+    $_SESSION["admin"] = $row->admin;
 
     @setcookie($cookie['name'], 
         $cookie['data'],
