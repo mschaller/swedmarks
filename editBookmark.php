@@ -25,23 +25,24 @@ if(isset($_POST["submit"])) {
             "insert into bookmark
                 (user, title, url, description, childof, public)
                 values ('%s','%s','%s','%s','%s','%s')",
-            mysqli_real_escape_string($db, $_SESSION["user"]),
-            mysqli_real_escape_string($db, $_POST["title"]),
-            mysqli_real_escape_string($db, $_POST["url"]),
-            mysqli_real_escape_string($db, $_POST["description"]),
-            mysqli_real_escape_string($db, $_POST["folder"]),
+            mysqli_real_escape_string($db, htmlentities($_SESSION["user"])),
+            mysqli_real_escape_string($db, htmlentities($_POST["title"], ENT_COMPAT | ENT_HTML401, "ISO-8859-1")),
+            mysqli_real_escape_string($db, htmlentities($_POST["url"], ENT_COMPAT | ENT_HTML401, "ISO-8859-1")),
+            mysqli_real_escape_string($db, htmlentities($_POST["description"], ENT_COMPAT | ENT_HTML401, "ISO-8859-1")),
+            mysqli_real_escape_string($db, htmlentities($_POST["folder"], ENT_COMPAT | ENT_HTML401, "ISO-8859-1")),
             "0"
         );
-
-    } else {
+    }
+    else  
+    {
         $query = sprintf(
             "update bookmark set title='%s', url='%s', description='%s', childof='%s'
                 where id='%s'",
-            mysqli_real_escape_string($db, $_POST["title"]),
-            mysqli_real_escape_string($db, $_POST["url"]),
-            mysqli_real_escape_string($db, $_POST["description"]),
-            mysqli_real_escape_string($db, $_POST["folder"]),
-            mysqli_real_escape_string($db, $_POST["bookmarkid"]) 
+            mysqli_real_escape_string($db, htmlentities($_POST["title"], ENT_COMPAT | ENT_HTML401, "ISO-8859-1")),
+            mysqli_real_escape_string($db, htmlentities($_POST["url"], ENT_COMPAT | ENT_HTML401, "ISO-8859-1")),
+            mysqli_real_escape_string($db, htmlentities($_POST["description"], ENT_COMPAT | ENT_HTML401, "ISO-8859-1")),
+            mysqli_real_escape_string($db, htmlentities($_POST["folder"], ENT_COMPAT | ENT_HTML401, "ISO-8859-1")),
+            mysqli_real_escape_string($db, htmlentities($_POST["bookmarkid"], ENT_COMPAT | ENT_HTML401, "ISO-8859-1")) 
         );
 
     }
