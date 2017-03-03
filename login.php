@@ -24,7 +24,7 @@ if(isset($_POST["logon"])) {
     }
     $row = mysqli_fetch_object($result);
     $_SESSION["loggedin"] = TRUE;
-    $_SESSION["user"] = $row->user;
+    $_SESSION["user"] = $row->username;
     $_SESSION["admin"] = $row->admin;
 
     @setcookie($cookie['name'], 
