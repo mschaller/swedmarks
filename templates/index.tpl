@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Test</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <link rel="icon" href="assets/batman.ico">
         <link rel="stylesheet" href="css/swedmarks.css">
     </head>

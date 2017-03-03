@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<body>
 <div>
     <h2>{$title}</h2>
     <form action="editBookmark.php?action={$action}" id="dataForm" name="bmnew" method="POST">
@@ -17,3 +23,5 @@
         document.getElementById('bmnew').title.focus();
     </script>
 </div>
+</body>
+</html>

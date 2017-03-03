@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<body>
 <div>
     <h2 class="title">New Folder</h2>
     <form action="editFolder.php?action={$action}" id="fnew" method="POST">
@@ -11,3 +17,5 @@
         document.getElementById('fnew').foldername.focus();
     </script>
 </div>
+</body>
+</head>
