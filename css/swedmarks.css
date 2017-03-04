@@ -62,7 +62,7 @@
 
 #navFolder li {
     list-style-type: none;
-    background-image: url(../assets/folder.gif);
+    background-image: url(../assets/file-directory.svg);
     background-repeat: no-repeat;
     line-height: 16px;
     padding-left: 18px;
