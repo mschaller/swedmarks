@@ -8,6 +8,9 @@
     <div class="boomkarkEditButton">
         <a href="javascript:editBookmark({$row.id});">edit</a>
     </div>
+    <div class="boomkarkDeleteButton">
+        <a href="javascript:deleteBookmark({$row.id});">delete</a>
+    </div>
 </div>
 {foreachelse}
 <div>

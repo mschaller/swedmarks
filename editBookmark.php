@@ -8,7 +8,7 @@ if(!isset($_GET['action'])) {
     exit();
 }
 $action = strtolower($_GET['action']);
-if($action != "new" && $action != "edit") {
+if($action != "new" && $action != "edit" && $action != "delete") {
     exit();
 }
 
@@ -33,7 +33,7 @@ if(isset($_POST["submit"])) {
             "0"
         );
     }
-    else  
+    else if ($action == "edit")
     {
         $query = sprintf(
             "update bookmark set title='%s', url='%s', description='%s', childof='%s'
@@ -45,6 +45,11 @@ if(isset($_POST["submit"])) {
             mysqli_real_escape_string($db, $_POST["bookmarkid"]) 
         );
 
+    }
+    else { // delete
+        $query = sprintf("delete from bookmark where id='%s'",
+            mysqli_real_escape_string($db, $_POST["bookmarkid"])
+        );
     }
     
     if(mysqli_query($db, $query)) {
@@ -70,7 +75,7 @@ if($action == "new") {
     $smarty->assign("bmdescription", "");
     $smarty->assign("bmid", "");
     $smarty->assign("bmfolderid", $folderid);
-} else {
+} else { // if($action == "edit" || $action == "delete")
     if(!isset($_GET["bookmarkid"])) {
         exit("no bookmarkid");
     }
@@ -90,12 +95,18 @@ if($action == "new") {
         exit();
     }
     $row = mysqli_fetch_object($result);
-    
-    $smarty->assign("bmtitle", $row->title);
-    $smarty->assign("bmurl", $row->url);
-    $smarty->assign("bmdescription", $row->description);
-    $smarty->assign("bmfolderid", $row->childof);
-    $smarty->assign("bmid", $row->id);
+
+    if($action == "edit") {
+        $title = "Edit Bookmark";
+        $smarty->assign("bmtitle", $row->title);
+        $smarty->assign("bmurl", $row->url);
+        $smarty->assign("bmdescription", $row->description);
+        $smarty->assign("bmfolderid", $row->childof);
+        $smarty->assign("bmid", $row->id);
+    } else {
+        $title = "Delete Bookmark";
+        $smarty->assign("bmid", $row->id);
+    }
 }
 
 $smarty->assign("action", $action);
