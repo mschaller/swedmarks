@@ -79,11 +79,26 @@
     overflow-y: auto;
 }
 
+.bookmarkInfo {
+    float: left;
+    margin-right: 150px;
+}
+
+.bookmarkMenu {
+    margin-right: 5px;
+    float: right;
+}
+
+.bookmarkMenu ul {
+    list-style-type: none;
+}
+
 .bookmarkItem {
+    overflow: auto;
     margin-left: 2px;
     margin-bottom: 5px;
 
-    padding: 0.9em 1em;
+//    padding: 0.9em 1em;
  
     border: 1px solid #dddddd;
     font-family: Verdana, Georgia, Times, serif;
