@@ -116,18 +116,19 @@
 
 .bookmarkName {
     font-weight: bold;
-    
+}
+
+.bookmarkName a {
+    color: #000;
 }
 
 .bookmarkUrl {
     color: #bbbbbb;
     margin-top: 1px;
-
 }
 
 .bookmarkDescription {
     margin-top: 3px;
-
 }
 
 .octicon {

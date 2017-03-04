@@ -14,8 +14,12 @@
     </div>
     <div class="bookmarkMenu">
         <ul>
-            <li><a href="javascript:editBookmark({$row.id});">edit</a></li>
-            <li><a href="javascript:deleteBookmark({$row.id});">delete</a></li>
+            <li><a href="javascript:editBookmark({$row.id});">
+            <img src="assets/pencil.svg"/>
+            </a></li>
+            <li><a href="javascript:deleteBookmark({$row.id});">
+            <img src="assets/trashcan.svg"/>
+            </a></li>
         </ul>
     </div>
 </div>
