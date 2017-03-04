@@ -5,6 +5,9 @@
     </div>
     <div class="bookmarkUrl">{$row.url}</div>
     <div class="bookmarkDescription">{$row.description}</div>
+    <div class="boomkarkEditButton">
+        <a href="javascript:editBookmark({$row.id});">edit</a>
+    </div>
 </div>
 {foreachelse}
 <div>

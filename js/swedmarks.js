@@ -52,6 +52,11 @@ function folderItemClicked(e) {
     selectFolderItem(e.target);
 }
 
+function reloadBookmarks() {
+    var list = document.getElementsByClassName("activeFolder");
+    updateBookmarks(list[0].id);
+}
+
 function updateBookmarks(id) {
     loadJSON("getBookmark.php?parent=" + id, buildBookmarks);
 }
@@ -83,6 +88,10 @@ function newBookmark() {
     folderid=list[0].id;
 
     window.open("editBookmark.php?action=new&folderid="+folderid, "bookmarknew","toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=400");
+}
+
+function editBookmark(id) {
+    window.open("editBookmark.php?action=edit&bookmarkid="+id, "bookmarkedit","toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=400");
 }
 
 function newFolder() {
