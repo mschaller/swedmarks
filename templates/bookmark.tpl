@@ -1,11 +1,16 @@
 {foreach from=$rows item=row}
 <div class="bookmarkItem">
     <div class="bookmarkInfo">
-        <div class="bookmarkName">
-            <a href="{$row.url}" target="_blank">{$row.title}</a>
+        <div class="bookmarkInfoLeft">
+            <img src="assets/star.svg" class="opticon"/>
         </div>
-        <div class="bookmarkUrl">{$row.url}</div>
-        <div class="bookmarkDescription">{$row.description}</div>
+        <div class="bookmarkInfoMain">
+            <div class="bookmarkName">
+                <a href="{$row.url}" target="_blank">{$row.title}</a>
+            </div>
+            <div class="bookmarkUrl">{$row.url}</div>
+            <div class="bookmarkDescription">{$row.description}</div>
+        </div>
     </div>
     <div class="bookmarkMenu">
         <ul>

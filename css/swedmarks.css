@@ -81,7 +81,16 @@
 
 .bookmarkInfo {
     float: left;
-    margin-right: 150px;
+    margin-right: 70px;
+}
+
+.bookmarkInfoLeft {
+    float: left;
+}
+
+.bookmarkInfoMain {
+    float: right;
+    margin-left: 5px;
 }
 
 .bookmarkMenu {
@@ -121,3 +130,8 @@
 
 }
 
+.octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
