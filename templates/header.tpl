@@ -22,3 +22,10 @@
         </a>
     </li>
 </ul>
+<ul class="navHeaderRight">
+    <li>
+        <a href="javascript:editProfile()">
+            <img src="assets/person.svg"/>
+        </a>
+    </li>
+</ul>

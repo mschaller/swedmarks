@@ -12,6 +12,10 @@
     left: 250px;
 }
 
+.navHeaderRight {
+    right: 8px;
+}
+
 #navHeader ul {
     position: fixed;
     display: inline;
@@ -136,4 +140,8 @@
   display: inline-block;
   vertical-align: text-top;
   fill: currentColor;
+}
+
+.icon24 {
+    width: 24px;
 }

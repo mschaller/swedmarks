@@ -94,6 +94,10 @@ function editBookmark(id) {
     window.open("editBookmark.php?action=edit&bookmarkid="+id, "bookmarkedit","toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=400");
 }
 
+function editProfile() {
+    window.open("editProfile.php?action=edit", "bookmarkedit","toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=400");
+}
+
 function deleteBookmark(id) {
     window.open("editBookmark.php?action=delete&bookmarkid="+id, "bookmarkedelete","toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=150");
 }
