@@ -22,4 +22,4 @@ function _ui_done() {ldelim}
     document.body.appendChild(uiCode); 
 {rdelim}
 
-{rdelim})();">S.W.E.D.mark it!</a>
+{rdelim})();">S.W.E.D.it!</a>
