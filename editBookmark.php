@@ -70,8 +70,7 @@ if($action == "new") {
     if(isset($_GET["folderid"])) {
         $folderid = $_GET["folderid"];
     }
-    $smarty->assign("bmtitle", "");
-    $smarty->assign("bmurl", "http://");
+
     $smarty->assign("bmdescription", "");
     $smarty->assign("bmid", "");
     $smarty->assign("bmfolderid", $folderid);

@@ -14,8 +14,9 @@
     </div>
     <div>
         <h3>Bookmarklet</h3>
-<p> <a class="bookmarklet" title="Ziehe diesen Link in deine Bookmarks!" href="javascript:void((function(){ldelim}var%20e=document.createElement('script');e.src='{$baseuri}/js/bookmarklet.js';document.body.appendChild(e);{rdelim})());"> <img src="assets/batman.ico" class="bookmarklet-icon">S.W.E.D.mark it!</a> &nbsp;« Add this shortcut to your toolbar! </p>
         <div>
+            {include 'bookmarklet.tpl' baseuri=$baseuri}
+        </div>
     </div>
 
 
