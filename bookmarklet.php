@@ -11,7 +11,26 @@ if(isset($_POST["submit"])) {
     {
         exit("Verbindungsfehler: ".mysqli_connect_error());
     }
+    
+    $query = sprintf(
+        "insert into bookmark
+            (user, title, url, description, childof, public)
+            values ('%s','%s','%s','%s','%s','%s')",
+        mysqli_real_escape_string($db, $_SESSION["user"]),
+        mysqli_real_escape_string($db, htmlentities($_POST["title"])),
+        mysqli_real_escape_string($db, $_POST["url"]),
+        mysqli_real_escape_string($db, htmlentities($_POST["description"])),
+        mysqli_real_escape_string($db, "0"),
+        "0"
+    );
+    
+    if(mysqli_query($db, $query)) {
+        echo "ok";
+    } else {
+        echo "error";
+    }
 
+    echo '<script language="JavaScript">window.history.back();</script>';
     exit();
 }
 
