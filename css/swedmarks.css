@@ -145,3 +145,22 @@
 .icon24 {
     width: 24px;
 }
+
+.bookmarkItem {
+    display: flex;
+}
+.bookmarkInfoLeft {
+    order: 1;
+    width: 50px;
+}
+
+.bookmarkInfoMain {
+    order: 2;
+    flex: 1;
+}
+
+.bookmarkMenu {
+    order: 3;
+    width: 50px;
+}
+
