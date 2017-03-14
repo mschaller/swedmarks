@@ -16,8 +16,5 @@
             </div>
             <div><input type="submit" value="login" name="logon"/></div>
         </form>
-        <script type="text/javascript" src="login.js"></script>
-        <script type="text/javascript">
-        </script>
     </body>
 </html>
