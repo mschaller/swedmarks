@@ -24,10 +24,10 @@ if(isset($_POST["submit"])) {
     if($action == "edit") {
     }
     else {
-        $query = sprintf("update user set password = md5('%s') where user = '%s' and password = md5('%s')",
+        $query = sprintf("update user set password = md5('%s') where username = '%s' and password = md5('%s')",
             mysqli_real_escape_string($db, $_POST["password1"]),
             mysqli_real_escape_string($db, $_SESSION["user"]),
-            mysqli_real_escape_string($db, $_SESSION["password0"])
+            mysqli_real_escape_string($db, $_POST["password0"])
         );
     }
 
