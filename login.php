@@ -23,7 +23,7 @@ if(isset($_POST["logon"])) {
     exit("Verbindungsfehler: ".mysqli_connect_error());
     }
 
-    $result = mysqli_query($db, "select * from user where username = '" . $user . "' and md5('" . $pass . "')");
+    $result = mysqli_query($db, "select * from user where username = '" . $user . "' and password = md5('" . $pass . "')");
     if($result->num_rows == 0) {
         exit();
     }
