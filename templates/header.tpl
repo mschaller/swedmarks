@@ -28,4 +28,9 @@
             <img src="assets/person.svg"/>
         </a>
     </li>
+    <li>
+        <a href="login.php?action=logout">
+            <img src="assets/sign-out.svg"/>
+        </a>
+    </li>
 </ul>

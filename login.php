@@ -2,7 +2,12 @@
 session_start();
 
 if(isset($_SESSION["loggedin"])) {
-    header("Location: index.php");
+    if(isset($_GET["action"]) && $_GET["action"] == "logout") {
+        session_destroy();
+        header("Location: login.php");
+    } else {
+        header("Location: index.php");
+    }
     exit();
 }
 

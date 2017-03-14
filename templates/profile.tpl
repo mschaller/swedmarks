@@ -21,7 +21,7 @@
             <span><input id="password1" name="password1" type="password"/></span><br/>
             <span style="display: inline-block; width: 120px;"><label for="password">Repeat it</label></span>
             <span><input id="password2" name="password2" type="password"/></span><br/>
-            <div><input type="submit" value="change password" name="profilepwd"/></div>
+            <div><input type="submit" value="change password" name="profilepwd" onlcik="javascript:AJAXPost(this)"/></div>
         </form>
     </div>
 
@@ -31,8 +31,7 @@
             {include 'bookmarklet.tpl' baseuri=$baseuri}
         </div>
     </div>
-
-
+    <script type="text/javascript" src="js/util.js"></script>
 </div>
 </body>
 </html>
