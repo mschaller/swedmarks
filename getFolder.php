@@ -12,7 +12,7 @@ if(!$db)
   exit("Verbindungsfehler: ".mysqli_connect_error());
 }
 
-$result = mysqli_query($db, "SELECT id, childof, name, user, deleted, public from folder where deleted = '0'");
+$result = mysqli_query($db, "SELECT id, childof, name, user, deleted from folder where deleted = '0'");
 
 $rows = array();
 while(($row = mysqli_fetch_assoc($result))) {
