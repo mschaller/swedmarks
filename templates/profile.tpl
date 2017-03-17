@@ -28,7 +28,7 @@
     <div>
         <h3>Bookmarklet</h3>
         <div>
-            {include 'bookmarklet.tpl' baseuri=$baseuri}
+            {include 'bookmarklet.tpl' baseuri=$baseuri token=$token}
         </div>
     </div>
     <script type="text/javascript" src="js/util.js"></script>

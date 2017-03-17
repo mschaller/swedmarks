@@ -16,7 +16,9 @@ CREATE TABLE `user` (
   `username` varchar(256) NOT NULL DEFAULT '',
   `password` varchar(256) NOT NULL DEFAULT '',
   `admin` enum('0','1') NOT NULL DEFAULT '0',
-  UNIQUE KEY `id` (`username`)
+  `token` varchar(32) NOT NULL DEFAULT '6',
+  UNIQUE KEY `id` (`username`),
+  UNIQUE KEY `token_UNIQUE` (`token`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE `bookmark` (

@@ -19,7 +19,12 @@ function _jq_done() {ldelim}
 function _ui_done() {ldelim}
     var uiCode = document.createElement('script'); 
     uiCode.src = '{$baseuri}/js/bookmarklet.js';
+    uiCode.onload=_ui_settoken;
     document.body.appendChild(uiCode); 
 {rdelim}
 
+function _ui_settoken() {ldelim}
+    var token = document.getElementById('swedmarksformtoken');
+    token.setAttribute('value', '{$token}');
+{rdelim}
 {rdelim})();">S.W.E.D.it!</a>

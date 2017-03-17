@@ -32,6 +32,7 @@ if(isset($_POST["logon"])) {
     $_SESSION["loggedin"] = TRUE;
     $_SESSION["user"] = $row->username;
     $_SESSION["admin"] = $row->admin;
+    $_SESSION["token"] = $row->token;
 
     @setcookie($cookie['name'], 
         $cookie['data'],

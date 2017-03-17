@@ -45,5 +45,6 @@ if(isset($_POST["submit"])) {
 include "./config/configsmarty.php";
 $smarty->assign("action", $action);
 $smarty->assign("user", $_SESSION["user"]);
+$smarty->assign("token", $_SESSION["token"]);
 $smarty->assign("baseuri", $smsettings["baseuri"]);
 $smarty->display('profile.tpl');

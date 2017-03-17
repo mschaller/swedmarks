@@ -13,6 +13,7 @@ uiCode.innerHTML = `
     <p>Description<br>
     <textarea name="description" cols="50" rows="8"></textarea>
     </p>
+    <input id="swedmarksformtoken" type="hidden" name="token" value="">
     <input type="submit" name="submit" value=" OK ">
     <input id="swedmarksformcancel" type="button" value=" Cancel ">
 </form>
