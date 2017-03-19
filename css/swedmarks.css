@@ -119,6 +119,11 @@
     font-size: 12px;
 }
 
+.over {
+    border: 2px dashed #000;
+}
+
+
 .bookmarkName {
     font-weight: bold;
 }

@@ -27,12 +27,31 @@ function loadJSON(url, callback) {
     xobj.send(null);  
 }
 
+function reloadBookmarks() {
+    var list = document.getElementsByClassName("activeFolder");
+    updateBookmarks(list[0].id);
+}
+
+function updateBookmarks(id) {
+    loadJSON("getBookmark.php?parent=" + id, buildBookmarks);
+}
+
 function buildBookmarks(response) {
     if(response == "") {
         window.location.href = "login.php";
     }
     var navFolder = document.getElementById("navBookmarks");
     navFolder.innerHTML = response;
+
+    var bookmarks = document.querySelectorAll(".bookmarkItem");
+    [].forEach.call(bookmarks, function(bm) {
+        attachEvent(bm, "dragstart", handleDragBookmarkStart);
+        attachEvent(bm, "dragover", handleDragBookmarkOver);
+        attachEvent(bm, "drop", handleDropBookmark);
+        attachEvent(bm, "dragend", handleDragBookmarkEnd);
+
+    });
+
 }
 
 function selectFolderItem(item) {
@@ -50,15 +69,6 @@ function folderItemClicked(e) {
         return;
 
     selectFolderItem(e.target);
-}
-
-function reloadBookmarks() {
-    var list = document.getElementsByClassName("activeFolder");
-    updateBookmarks(list[0].id);
-}
-
-function updateBookmarks(id) {
-    loadJSON("getBookmark.php?parent=" + id, buildBookmarks);
 }
 
 function buildFolderTree(response) {
@@ -109,3 +119,49 @@ function newFolder() {
 
     window.open("editFolder.php?action=new&folderid="+folderid, "foldernew","toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=200");
 }
+
+function handleDragBookmarkStart(e) {
+  this.style.opacity = '0.4';  // this / e.target is the source node.
+}
+
+function handleDragBookmarkOver(e) {
+  if (e.preventDefault) {
+    e.preventDefault(); // Necessary. Allows us to drop.
+  }
+
+  e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
+
+  return false;
+}
+
+function handleDragFolderEnter(e) {
+  // this / e.target is the current hover target.
+  this.classList.add('over');
+}
+
+function handleDragFolderLeave(e) {
+  this.classList.remove('over');  // this / e.target is previous target element.
+}
+
+
+function handleDropBookmark(e) {
+  // this / e.target is current target element.
+
+  if (e.stopPropagation) {
+    e.stopPropagation(); // stops the browser from redirecting.
+  }
+
+  // See the section on the DataTransfer object.
+
+  return false;
+}
+
+function handleDragBookmarkEnd(e) {
+  // this/e.target is the source node.
+  this.style.opacity = '1.0';  // this / e.target is the source node.
+
+  //[].forEach.call(cols, function (col) {
+  //  col.classList.remove('over');
+  //});
+}
+
