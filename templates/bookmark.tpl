@@ -5,7 +5,7 @@
     </div>
     <div class="bookmarkInfoMain">
         <div class="bookmarkName">
-            <a href="{$row.url}" target="_blank">{$row.title}</a>
+            <a href="{$row.url}" target="_blank" rel="noreferrer">{$row.title}</a>
         </div>
         <div class="bookmarkUrl">{$row.url}</div>
         <div class="bookmarkDescription">{$row.description}</div>
