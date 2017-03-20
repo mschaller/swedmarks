@@ -12,7 +12,12 @@ function detachEvent(element, type, handler) {
         element.detachEvent("on"+type, handler);
 }
 
-
+function removeClass(node, cls) {
+    if(node && node.className && node.className.indexOf(cls) >= 0) {
+        var pattern = new RegExp('\\s*' + cls + '\\s*');
+        node.className = node.className.replace(pattern, ' ');
+    }
+}
 
 function loadJSON(url, callback) {
     var xobj = new XMLHttpRequest();
@@ -46,10 +51,7 @@ function buildBookmarks(response) {
     var bookmarks = document.querySelectorAll(".bookmarkItem");
     [].forEach.call(bookmarks, function(bm) {
         attachEvent(bm, "dragstart", handleDragBookmarkStart);
-        attachEvent(bm, "dragover", handleDragBookmarkOver);
-        attachEvent(bm, "drop", handleDropBookmark);
         attachEvent(bm, "dragend", handleDragBookmarkEnd);
-
     });
 
 }
@@ -57,10 +59,10 @@ function buildBookmarks(response) {
 function selectFolderItem(item) {
     var list = document.getElementsByClassName("activeFolder");
     for(var i = 0; i < list.length; i++) {
-        list[i].removeAttribute("class");
+        list[i].classList.remove("activeFolder");
     }
 
-    item.setAttribute("class","activeFolder");
+    item.classList.add("activeFolder");
     updateBookmarks(item.id);        
 }
 
@@ -86,6 +88,15 @@ function buildFolderTree(response) {
 
     listFolder = document.getElementById("listFolder");
     attachEvent(listFolder, "click", folderItemClicked);
+
+    
+    var bookmarks = document.querySelectorAll(".folderItem");
+    [].forEach.call(bookmarks, function(bm) {
+        attachEvent(bm, "dragenter", handleDragFolderEnter);
+        attachEvent(bm, "dragleave", handleDragFolderLeave);
+        attachEvent(bm, "dragover", handleDragFolderOver);
+        attachEvent(bm, "drop", handleDropOnFolder);
+    });
 }
 
 function updateFolderTree() {
@@ -121,10 +132,12 @@ function newFolder() {
 }
 
 function handleDragBookmarkStart(e) {
-  this.style.opacity = '0.4';  // this / e.target is the source node.
+    this.style.opacity = '0.4';  // this / e.target is the source node.
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', this.id);
 }
 
-function handleDragBookmarkOver(e) {
+function handleDragFolderOver(e) {
   if (e.preventDefault) {
     e.preventDefault(); // Necessary. Allows us to drop.
   }
@@ -144,7 +157,7 @@ function handleDragFolderLeave(e) {
 }
 
 
-function handleDropBookmark(e) {
+function handleDropOnFolder(e) {
   // this / e.target is current target element.
 
   if (e.stopPropagation) {
@@ -152,16 +165,14 @@ function handleDropBookmark(e) {
   }
 
   // See the section on the DataTransfer object.
-
+  //alert(e.target.id);
+  e.target.classList.remove("over");
+  alert(e.dataTransfer.getData('text/html'));
   return false;
 }
 
 function handleDragBookmarkEnd(e) {
   // this/e.target is the source node.
   this.style.opacity = '1.0';  // this / e.target is the source node.
-
-  //[].forEach.call(cols, function (col) {
-  //  col.classList.remove('over');
-  //});
 }
 
