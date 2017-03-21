@@ -8,7 +8,7 @@ if(!isset($_GET['action'])) {
     exit();
 }
 $action = strtolower($_GET['action']);
-if($action != "new" && $action != "edit" && $action != "delete") {
+if($action != "new" && $action != "edit" && $action != "delete" && $action != "move") {
     exit();
 }
 
@@ -46,6 +46,13 @@ if(isset($_POST["submit"])) {
         );
 
     }
+    else if ($action == "move") {
+        $query = sprintf(
+            "update bookmark set childof='%s' where id='%s'",
+            mysqli_real_escape_string($db, $_POST["folderid"]),
+            mysqli_real_escape_string($db, $_POST["bookmarkid"])
+        );
+    }
     else { // delete
         $query = sprintf("delete from bookmark where id='%s'",
             mysqli_real_escape_string($db, $_POST["bookmarkid"])
@@ -58,8 +65,12 @@ if(isset($_POST["submit"])) {
         echo "error";
     }
 
-    echo '<script language="JavaScript">window.opener.reloadBookmarks();</script>';
-    echo '<script language="JavaScript">self.close();</script>';
+    if(isset($_POST["silent"])) {
+
+    } else {
+        echo '<script language="JavaScript">window.opener.reloadBookmarks();</script>';
+        echo '<script language="JavaScript">self.close();</script>';
+    }
     exit();
 }
 

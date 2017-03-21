@@ -12,7 +12,12 @@ function detachEvent(element, type, handler) {
         element.detachEvent("on"+type, handler);
 }
 
-
+function removeClass(node, cls) {
+    if(node && node.className && node.className.indexOf(cls) >= 0) {
+        var pattern = new RegExp('\\s*' + cls + '\\s*');
+        node.className = node.className.replace(pattern, ' ');
+    }
+}
 
 function loadJSON(url, callback) {
     var xobj = new XMLHttpRequest();
@@ -27,22 +32,38 @@ function loadJSON(url, callback) {
     xobj.send(null);  
 }
 
+function reloadBookmarks() {
+    var list = document.getElementsByClassName("activeFolder");
+    updateBookmarks(list[0].id.substr(1));
+}
+
+function updateBookmarks(id) {
+    loadJSON("getBookmark.php?parent=" + id, buildBookmarks);
+}
+
 function buildBookmarks(response) {
     if(response == "") {
         window.location.href = "login.php";
     }
     var navFolder = document.getElementById("navBookmarks");
     navFolder.innerHTML = response;
+
+    var bookmarks = document.querySelectorAll(".bookmarkItem");
+    [].forEach.call(bookmarks, function(bm) {
+        attachEvent(bm, "dragstart", handleDragBookmarkStart);
+        attachEvent(bm, "dragend", handleDragBookmarkEnd);
+    });
+
 }
 
 function selectFolderItem(item) {
     var list = document.getElementsByClassName("activeFolder");
     for(var i = 0; i < list.length; i++) {
-        list[i].removeAttribute("class");
+        list[i].classList.remove("activeFolder");
     }
 
-    item.setAttribute("class","activeFolder");
-    updateBookmarks(item.id);        
+    item.classList.add("activeFolder");
+    updateBookmarks(item.id.substr(1));        
 }
 
 function folderItemClicked(e) {
@@ -50,15 +71,6 @@ function folderItemClicked(e) {
         return;
 
     selectFolderItem(e.target);
-}
-
-function reloadBookmarks() {
-    var list = document.getElementsByClassName("activeFolder");
-    updateBookmarks(list[0].id);
-}
-
-function updateBookmarks(id) {
-    loadJSON("getBookmark.php?parent=" + id, buildBookmarks);
 }
 
 function buildFolderTree(response) {
@@ -76,6 +88,15 @@ function buildFolderTree(response) {
 
     listFolder = document.getElementById("listFolder");
     attachEvent(listFolder, "click", folderItemClicked);
+
+    
+    var bookmarks = document.querySelectorAll(".folderItem");
+    [].forEach.call(bookmarks, function(bm) {
+        attachEvent(bm, "dragenter", handleDragFolderEnter);
+        attachEvent(bm, "dragleave", handleDragFolderLeave);
+        attachEvent(bm, "dragover", handleDragFolderOver);
+        attachEvent(bm, "drop", handleDropOnFolder);
+    });
 }
 
 function updateFolderTree() {
@@ -84,14 +105,22 @@ function updateFolderTree() {
 
 function newBookmark() {
     var list = document.getElementsByClassName("activeFolder");
-    var folderid = 0;
-    folderid=list[0].id;
+    var folderid = list[0].id.substr(1);
 
     window.open("editBookmark.php?action=new&folderid="+folderid, "bookmarknew","toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=400");
 }
 
 function editBookmark(id) {
     window.open("editBookmark.php?action=edit&bookmarkid="+id, "bookmarkedit","toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=400");
+}
+
+function moveBookmark(bid, fid) {
+    var params = "";
+    params += "folderid=" + encodeURIComponent(fid);
+    params += "&bookmarkid=" + encodeURIComponent(bid);
+    params += "&submit=move";
+
+    AJAXRawPost("editBookmark.php?action=move&silent=1", params, function(){reloadBookmarks();});
 }
 
 function editProfile() {
@@ -104,8 +133,52 @@ function deleteBookmark(id) {
 
 function newFolder() {
     var list = document.getElementsByClassName("activeFolder");
-    var folderid = 0;
-    folderid=list[0].id;
+    var folderid = list[0].id.substr(1);
 
     window.open("editFolder.php?action=new&folderid="+folderid, "foldernew","toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=200");
 }
+
+function handleDragBookmarkStart(e) {
+    this.style.opacity = '0.4';  // this / e.target is the source node.
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', this.id.substr(1));
+}
+
+function handleDragFolderOver(e) {
+  if (e.preventDefault) {
+    e.preventDefault(); // Necessary. Allows us to drop.
+  }
+
+  e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
+
+  return false;
+}
+
+function handleDragFolderEnter(e) {
+  // this / e.target is the current hover target.
+  this.classList.add('over');
+}
+
+function handleDragFolderLeave(e) {
+  this.classList.remove('over');  // this / e.target is previous target element.
+}
+
+
+function handleDropOnFolder(e) {
+  if (e.stopPropagation) {
+    e.stopPropagation(); // stops the browser from redirecting.
+  }
+
+  e.target.classList.remove("over");
+  var bid = e.dataTransfer.getData('text/html');
+  var fid = e.target.id.substr(1);
+
+  moveBookmark(bid, fid);
+  return false;
+}
+
+function handleDragBookmarkEnd(e) {
+  // this/e.target is the source node.
+  this.style.opacity = '1.0';  // this / e.target is the source node.
+}
+

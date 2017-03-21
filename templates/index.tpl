@@ -9,6 +9,7 @@
         <div id="navHeader">{include 'header.tpl'}</div>
         <div id="navFolder"></div>
         <div id="navBookmarks"></div>
+        <script type="text/javascript" src="js/util.js"></script>
         <script type="text/javascript" src="js/swedmarks.js"></script>
         <script type="text/javascript">
             function init() {
