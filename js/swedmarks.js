@@ -34,7 +34,7 @@ function loadJSON(url, callback) {
 
 function reloadBookmarks() {
     var list = document.getElementsByClassName("activeFolder");
-    updateBookmarks(list[0].id);
+    updateBookmarks(list[0].id.substr(1));
 }
 
 function updateBookmarks(id) {
@@ -63,7 +63,7 @@ function selectFolderItem(item) {
     }
 
     item.classList.add("activeFolder");
-    updateBookmarks(item.id);        
+    updateBookmarks(item.id.substr(1));        
 }
 
 function folderItemClicked(e) {
@@ -105,8 +105,7 @@ function updateFolderTree() {
 
 function newBookmark() {
     var list = document.getElementsByClassName("activeFolder");
-    var folderid = 0;
-    folderid=list[0].id;
+    var folderid = list[0].id.substr(1);
 
     window.open("editBookmark.php?action=new&folderid="+folderid, "bookmarknew","toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=400");
 }
@@ -125,8 +124,7 @@ function deleteBookmark(id) {
 
 function newFolder() {
     var list = document.getElementsByClassName("activeFolder");
-    var folderid = 0;
-    folderid=list[0].id;
+    var folderid = list[0].id.substr(1);
 
     window.open("editFolder.php?action=new&folderid="+folderid, "foldernew","toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=200");
 }
@@ -134,7 +132,7 @@ function newFolder() {
 function handleDragBookmarkStart(e) {
     this.style.opacity = '0.4';  // this / e.target is the source node.
     e.dataTransfer.effectAllowed = 'move';
-    e.dataTransfer.setData('text/html', this.id);
+    e.dataTransfer.setData('text/html', this.id.substr(1));
 }
 
 function handleDragFolderOver(e) {

@@ -1,5 +1,5 @@
 {foreach from=$rows item=row}
-<div id="{$row.id}" class="bookmarkItem" draggable="true">
+<div id="b{$row.id}" class="bookmarkItem" draggable="true">
     <div class="bookmarkInfoLeft">
         <img src="assets/star.svg" class="opticon"/>
     </div>
