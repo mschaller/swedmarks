@@ -114,6 +114,15 @@ function editBookmark(id) {
     window.open("editBookmark.php?action=edit&bookmarkid="+id, "bookmarkedit","toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=400");
 }
 
+function moveBookmark(bid, fid) {
+    var params = "";
+    params += "folderid=" + encodeURIComponent(fid);
+    params += "&bookmarkid=" + encodeURIComponent(bid);
+    params += "&submit=move";
+
+    AJAXRawPost("editBookmark.php?action=move&silent=1", params, function(){reloadBookmarks();});
+}
+
 function editProfile() {
     window.open("editProfile.php?action=edit", "bookmarkedit","toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=400");
 }
@@ -156,16 +165,15 @@ function handleDragFolderLeave(e) {
 
 
 function handleDropOnFolder(e) {
-  // this / e.target is current target element.
-
   if (e.stopPropagation) {
     e.stopPropagation(); // stops the browser from redirecting.
   }
 
-  // See the section on the DataTransfer object.
-  //alert(e.target.id);
   e.target.classList.remove("over");
-  alert(e.dataTransfer.getData('text/html'));
+  var bid = e.dataTransfer.getData('text/html');
+  var fid = e.target.id.substr(1);
+
+  moveBookmark(bid, fid);
   return false;
 }
 

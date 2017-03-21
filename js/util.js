@@ -13,19 +13,15 @@ function AJAXPost(myself) {
         params += elem[i].name + "=" + encodeURIComponent(value) + "&";
     }
 
-    if (window.XMLHttpRequest) {
-        // code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp=new XMLHttpRequest();
-    } else { 
-        // code for IE6, IE5
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    return AJAXRawPost(url, params);
+}
+
+function AJAXRawPost(url, data, onload = null) {
+    var request = new XMLHttpRequest();
+    if(onload!=null) {
+        request.addEventListener("load", onload, false);
     }
-
-    xmlhttp.open("POST",url,false);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.setRequestHeader("Content-length", params.length);
-    xmlhttp.setRequestHeader("Connection", "close");
-    xmlhttp.send(params);
-
-    return xmlhttp.responseText;
+    request.open('POST', url, true);
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    request.send(data);
 }
