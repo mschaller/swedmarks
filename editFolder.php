@@ -23,11 +23,10 @@ if(isset($_POST["submit"])) {
         exit("Verbindungsfehler: ".mysqli_connect_error());
     }
     $query = sprintf(
-        "insert into folder (childof, name, public, user)
-            values ('%s','%s','%s','%s')",
+        "insert into folder (childof, name, user)
+            values ('%s','%s','%s')",
         mysqli_real_escape_string($db, $_POST["folder"]),
         mysqli_real_escape_string($db, $_POST["foldername"]),
-        "0",
         mysqli_real_escape_string($db, $_SESSION["user"])
     );
 
