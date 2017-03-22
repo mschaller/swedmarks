@@ -23,14 +23,13 @@ if(isset($_POST["submit"])) {
     if($action == "new") {
         $query = sprintf(
             "insert into bookmark
-                (user, title, url, description, childof, public)
-                values ('%s','%s','%s','%s','%s','%s')",
+                (user, title, url, description, childof)
+                values ('%s','%s','%s','%s','%s')",
             mysqli_real_escape_string($db, $_SESSION["user"]),
             mysqli_real_escape_string($db, htmlentities($_POST["title"])),
             mysqli_real_escape_string($db, $_POST["url"]),
             mysqli_real_escape_string($db, htmlentities($_POST["description"])),
-            mysqli_real_escape_string($db, $_POST["folder"]),
-            "0"
+            mysqli_real_escape_string($db, $_POST["folder"])
         );
     }
     else if ($action == "edit")
