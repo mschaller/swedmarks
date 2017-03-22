@@ -5,6 +5,7 @@ if (basename ($_SERVER['SCRIPT_NAME']) == basename (__FILE__)) {
 
 $smsettings = array(
     'baseuri' => 'https://swedmarks.com',
+    'basepath' => '/var/www/swedmarks', 
 );
 
 $dsn = array(
