@@ -1,3 +1,8 @@
+body {
+    background: #bdbdbd;    
+
+}
+
 #navHeader {
     top: 30px;
     margin-top: -30px;
@@ -83,62 +88,80 @@
     overflow-y: auto;
 }
 
-.bookmarkInfo {
-    float: left;
-    margin-right: 70px;
-}
 
-.bookmarkInfoLeft {
-    float: left;
-}
-
-.bookmarkInfoMain {
-    float: right;
-    margin-left: 5px;
-}
-
-.bookmarkMenu {
-    margin-right: 5px;
-    float: right;
-}
-
-.bookmarkMenu ul {
-    list-style-type: none;
-}
 
 .bookmarkItem {
-    overflow: auto;
-    margin-left: 2px;
-    margin-bottom: 5px;
-    margin-right: 5px;
-
-//    padding: 0.9em 1em;
- 
+    width: 320px;
+    height: 220px;
     border: 1px solid #dddddd;
-    font-family: Verdana, Georgia, Times, serif;
-    font-size: 12px;
+    background: rgb(248, 248, 248);
+    display: inline-block;
+    position: relative;
 }
 
-.over {
-    border: 2px dashed #000;
+.bookmarkImage {
+    position: absolute;
+    background: #1c5ac4;
+    width: 300px;
+    height: 140px;
+    left: 10px;
+    top: 10px;
 }
 
-
-.bookmarkName {
+.bookmarkTitle {
+    position: absolute;
+    top: 156px;
+    width: 291px;
+    position: absolute;
+    left: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    
+    font-size: 13px;
     font-weight: bold;
-}
-
-.bookmarkName a {
-    color: #000;
-}
-
-.bookmarkUrl {
-    color: #bbbbbb;
-    margin-top: 1px;
+    color: #262626;
 }
 
 .bookmarkDescription {
-    margin-top: 3px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 256px;
+    height: 96px;
+    padding: 22px;
+    
+    color: #fff;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+}
+
+.bmOver {
+    background-color: rgb(0, 248, 248);
+}
+
+.bookmarkMenu {
+    position: absolute;
+    right: 15px;
+    bottom: 7px;
+    font-weight: bold;
+    font-size: 12px;
+    color: #1c5ac4;
+    text-transform: uppercase;
+    margin-left: 5px;
+}
+
+.bookmarkMenu img {
+    width: 16px;
+    height: 16px;
+}
+
+
+.over {
+    border: 2px dashed #000;
 }
 
 .octicon {
@@ -151,21 +174,4 @@
     width: 24px;
 }
 
-.bookmarkItem {
-    display: flex;
-}
-.bookmarkInfoLeft {
-    order: 1;
-    width: 50px;
-}
-
-.bookmarkInfoMain {
-    order: 2;
-    flex: 1;
-}
-
-.bookmarkMenu {
-    order: 3;
-    width: 50px;
-}
 

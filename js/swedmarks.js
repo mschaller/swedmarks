@@ -182,3 +182,21 @@ function handleDragBookmarkEnd(e) {
   this.style.opacity = '1.0';  // this / e.target is the source node.
 }
 
+function bmEnter(el) {
+    //el.classList.add("bmover");
+    var item = el.querySelectorAll(".bookmarkDescription")[0];
+    item.style.opacity = '1.0';
+    
+    item = el.querySelectorAll(".bookmarkMenu")[0];
+    item.style.display = 'inline';
+    
+}
+
+function bmLeave(el) {
+    //el.classList.remove("bmOver");
+    var item = el.querySelectorAll(".bookmarkDescription")[0];
+    item.style.opacity = '0.0';
+
+    item = el.querySelectorAll(".bookmarkMenu")[0];
+    item.style.display = 'none';
+}
