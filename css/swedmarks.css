@@ -53,6 +53,7 @@ body {
     top: 30;
     bottom: 0;
     border: 1px solid #dddddd;
+    background: rgb(198,198,198);
 }
 
 #navFolder ul {
@@ -94,7 +95,7 @@ body {
     width: 320px;
     height: 220px;
     border: 1px solid #dddddd;
-    background: rgb(248, 248, 248);
+    background: rgb(198, 198, 198);
     display: inline-block;
     position: relative;
 }
