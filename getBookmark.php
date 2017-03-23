@@ -22,4 +22,5 @@ while(($row = mysqli_fetch_assoc($result))) {
 
 include "./config/configsmarty.php";
 $smarty->assign('rows', $rows);
+$smarty->assign('username', $_SESSION["user"]);
 $smarty->display('bookmark.tpl');
