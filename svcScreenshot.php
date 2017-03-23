@@ -23,3 +23,46 @@ if(isset($_POST["token"])) {
     exit();
 }
 
+if(isset($_POST["submit"])) {
+    $uploaddir = $smsettings["basepath"] . "/screenshots/" . $username;
+
+    if(!file_exists($uploaddir)) {
+        mkdir($uploaddir);
+    }
+
+    $filename =hash('sha256', $_POST['url']) . ".jpg"; 
+    $uploadfile = $uploaddir . "/" . $filename;
+
+    if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile)) {
+        $query = sprintf(
+            "update bookmark set screenshot_name='%s', screenshot_date=now()
+                where user='%s' and url = '%s'",
+            mysqli_real_escape_string($db, $filename),
+            mysqli_real_escape_string($db, $username),
+            mysqli_real_escape_string($db, $_POST['url'])
+        );
+
+
+        if(mysqli_query($db, $query)) {
+            echo "ok";
+        } else {
+            echo "error";
+        }
+    } else {
+        echo "upload error";
+        print_r($_FILES);
+    }
+} else if (isset($_POST["geturl"])) {
+    $query = sprintf("select url from bookmark where user = '%s'and screenshot_name is null",
+        mysqli_real_escape_string($db, $username)
+    );
+    
+    $result = mysqli_query($db, $query);
+    if($result->num_rows == 0) {
+        exit();
+    }
+    $row = mysqli_fetch_object($result);
+
+    echo $row->url;
+}
+
