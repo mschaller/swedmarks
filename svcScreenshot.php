@@ -30,7 +30,7 @@ if(isset($_POST["submit"])) {
         mkdir($uploaddir);
     }
 
-    $filename =hash('sha256', $_POST['url']) . ".jpg"; 
+    $filename =hash('sha256', $_POST['url']) . ".png"; 
     $uploadfile = $uploaddir . "/" . $filename;
 
     if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile)) {

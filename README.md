@@ -31,7 +31,7 @@ CREATE TABLE `bookmark` (
   `childof` int NOT NULL DEFAULT '0',
   `deleted` enum('0','1') NOT NULL DEFAULT '0',
   `favicon` varchar(255) DEFAULT NULL,
-  `screenshot_name` varchar(50) DEFAULT NULL,
+  `screenshot_name` varchar(255) DEFAULT NULL,
   `screenshot_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   FULLTEXT KEY `title` (`title`,`url`,`description`)
