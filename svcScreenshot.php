@@ -53,7 +53,9 @@ if(isset($_POST["submit"])) {
         print_r($_FILES);
     }
 } else if (isset($_POST["geturl"])) {
-    $query = sprintf("select url from bookmark where user = '%s'and screenshot_name is null",
+    $query = sprintf("select url from bookmark where user = '%s'and screenshot_name is null
+        order by screenshot_date asc
+        ",
         mysqli_real_escape_string($db, $username)
     );
     
@@ -64,5 +66,21 @@ if(isset($_POST["submit"])) {
     $row = mysqli_fetch_object($result);
 
     echo $row->url;
+} else if (isset($_POST["skipurl"])) {
+    $query = sprintf(
+        "update bookmark set screenshot_date=now()
+            where user='%s' and url = '%s'",
+        mysqli_real_escape_string($db, $username),
+        mysqli_real_escape_string($db, $_POST['url'])
+    );
+
+
+    if(mysqli_query($db, $query)) {
+        echo "ok";
+    } else {
+        echo "error";
+    }
+
+
 }
 
