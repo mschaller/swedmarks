@@ -1,7 +1,12 @@
 <ul>
     <li>
+        <a href="javascript:alert('not implemented');">
+            <img src="assets/home.svg"/>
+        </a>
+    </li>
+    <li>
         <a href="javascript:newFolder()">
-            <img src="assets/diff-added.svg"/>
+            <img src="assets/plus.svg"/>
         </a>
     </li>
     <li>
@@ -18,7 +23,7 @@
 <ul class="navHeaderIndent"> 
     <li>
         <a href="javascript:newBookmark()">
-            <img src="assets/diff-added.svg"/>
+            <img src="assets/plus.svg"/>
         </a>
     </li>
 </ul>
